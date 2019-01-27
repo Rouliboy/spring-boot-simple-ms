@@ -1,6 +1,7 @@
 package org.jvi.demo.model;
 
 import java.time.Instant;
+import javax.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,7 +15,9 @@ public class Evenement {
 
   private String nom;
   private String numero;
-  private int clientId;
+
+  @Column(name = "client_id")
+  private int idDuClient;
   private Instant debut;
 
 }

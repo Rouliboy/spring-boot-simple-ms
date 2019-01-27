@@ -11,10 +11,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import org.jvi.demo.mapper.CustomBeanPropertyRowMapper;
+import org.jvi.demo.mapper.ResultSetMapper;
 import org.jvi.demo.model.Evenement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.CallableStatementCallback;
 import org.springframework.jdbc.core.CallableStatementCreator;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -36,13 +37,13 @@ public class EvenementRepository {
   public List<Evenement> retrieveEvenements() {
 
     final Map<String, Object> map = new HashMap<>();
-    map.put("clientId", 2);
+    map.put("clientId", 1);
     map.put("toot", 2);
 
     final String query =
         "SELECT nom, numero, client_id, debut from common_evenement where client_id=:clientId";
     return namedParameterJdbcTemplate.query(query, map,
-        new BeanPropertyRowMapper<Evenement>(Evenement.class));
+        new CustomBeanPropertyRowMapper<Evenement>(Evenement.class));
   }
 
   public List<Evenement> retrieveEvenementsWithCallback() {
@@ -61,7 +62,7 @@ public class EvenementRepository {
               throws SQLException, DataAccessException {
             // TODO Auto-generated method stub
 
-            final List<Evenement> result = new ArrayList<>();
+            List<Evenement> result = new ArrayList<>();
             ResultSet resultSet = null;
             boolean isResultSet = statement.execute();
 
@@ -70,14 +71,9 @@ public class EvenementRepository {
               if (isResultSet) {
                 resultSet = statement.getResultSet();
 
-                final BeanPropertyRowMapper<Evenement> mapper =
-                    new BeanPropertyRowMapper<Evenement>(Evenement.class);
+                final ResultSetMapper rsm = new ResultSetMapper();
+                result = rsm.map(resultSet, Evenement.class);
 
-                int rowNumber = 0;
-                while (resultSet.next()) {
-                  final Evenement fl = mapper.mapRow(resultSet, ++rowNumber);
-                  result.add(fl);
-                }
                 resultSet.close();
               } else {
                 if (statement.getUpdateCount() == -1) {
