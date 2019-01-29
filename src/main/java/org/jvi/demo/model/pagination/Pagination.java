@@ -33,15 +33,16 @@ final @Builder public class Pagination {
   @Value
   @AllArgsConstructor(onConstructor = @__(@JsonCreator))
   @Builder
-  private static class OrderBy {
+  public static class OrderBy {
 
     @NotNull
     private String field;
 
     private Direction direction = Direction.ASC;
+
+    public enum Direction {
+      ASC, DESC;
+    }
   }
 
-  private enum Direction {
-    ASC, DESC;
-  }
 }
