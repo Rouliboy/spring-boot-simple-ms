@@ -42,7 +42,7 @@ public class DemoController {
   }
 
   @PostMapping("/post")
-  public String post(final Search search) {
+  public String post(@RequestBody @Valid final Search search) {
 
     log.info("Enter in post : {}", search);
     return "OK";
