@@ -14,7 +14,8 @@ import lombok.Value;
 
 @Value
 @AllArgsConstructor(onConstructor = @__(@JsonCreator))
-final @Builder public class Pagination {
+@Builder
+public class Pagination {
 
   @Min(0)
   @NotNull
@@ -29,20 +30,5 @@ final @Builder public class Pagination {
   @Singular
   @Valid
   private List<OrderBy> orderBys = new ArrayList<>();
-
-  @Value
-  @AllArgsConstructor(onConstructor = @__(@JsonCreator))
-  @Builder
-  public static class OrderBy {
-
-    @NotNull
-    private String field;
-
-    private Direction direction = Direction.ASC;
-
-    public enum Direction {
-      ASC, DESC;
-    }
-  }
 
 }
