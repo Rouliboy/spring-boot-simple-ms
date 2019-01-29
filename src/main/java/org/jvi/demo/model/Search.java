@@ -2,25 +2,25 @@ package org.jvi.demo.model;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import org.jvi.demo.model.pagination.Pagination;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Value;
 
 @Value
-@AllArgsConstructor
+@AllArgsConstructor(onConstructor = @__(@JsonCreator))
 @Builder
 public class Search {
 
+  @Valid
   @NotNull
-  @Size(max = 10, min = 1)
-  private String immId;
+  private Body body;
 
   @Valid
-  private Params params;
+  private Params params = Params.builder().build();
 
-  private Search() {
-    immId = null;
-    params = new Params(null);
-  }
+  @Valid
+  @NotNull
+  private Pagination pagination;
 }

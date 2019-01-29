@@ -9,10 +9,11 @@ import lombok.Value;
 @Value
 @AllArgsConstructor(onConstructor = @__(@JsonCreator))
 @Builder
-public class Params {
+public class Body {
+
+  @Size(max = 10, min = 1)
+  private String immId;
 
   @Size(max = 5)
-  private String opener;
-
-  private SearchType searchType = SearchType.A;
+  private String name;
 }
