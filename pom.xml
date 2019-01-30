@@ -12,11 +12,13 @@
 	<name>spring-boot-simple-ms</name>
 	<description>spring-boot-simple-ms</description>
 
+
+
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.5.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<groupId>com.nexity.wgl</groupId>
+		<artifactId>location-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath />
 	</parent>
 
 	<properties>
@@ -24,9 +26,66 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<oracle-driver.version>12.1.0</oracle-driver.version>
+		<lib-location-logging.version>0.0.1-SNAPSHOT</lib-location-logging.version>
+		<lib-location-utils.version>0.0.1-SNAPSHOT</lib-location-utils.version>
+		<util-ctrl.version>0.0.1-SNAPSHOT</util-ctrl.version>
+		<lib-location-security.version>0.0.1-SNAPSHOT</lib-location-security.version>
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>com.nexity.wgl.lib.utilctrl</groupId>
+			<artifactId>util-ctrl</artifactId>
+			<version>${util-ctrl.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.nexity.wgl.lib</groupId>
+			<artifactId>lib-location-logging</artifactId>
+			<version>${lib-location-logging.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.nexity.wgl.lib</groupId>
+			<artifactId>lib-location-utils</artifactId>
+			<version>${lib-location-utils.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.nexity.wgl.lib</groupId>
+			<artifactId>lib-location-security</artifactId>
+			<version>${lib-location-security.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>mssql-jdbc</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -46,34 +105,42 @@
 			<artifactId>commons-io</artifactId>
 			<version>1.3.2</version>
 		</dependency>
-		
-<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
-<dependency>
-    <groupId>org.apache.commons</groupId>
-    <artifactId>commons-lang3</artifactId>
-    <version>3.8.1</version>
-</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+		</dependency>
 
-<dependency>
-    <groupId>javax.persistence</groupId>
-    <artifactId>persistence-api</artifactId>
-    <version>1.0.2</version>
-</dependency>
-
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.8.1</version>
+		</dependency>
 
 		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>persistence-api</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+
+
+<!-- 		<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc7</artifactId>
 			<version>${oracle-driver.version}</version>
 			<scope>system</scope>
 			<systemPath>${project.basedir}/ojdbc7-12.1.0.jar</systemPath>
-		</dependency>
+		</dependency> -->
 
 		<dependency>
-			<groupId>com.nexity.wgl.lib</groupId>
-			<artifactId>cors</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -114,8 +181,8 @@
 				</executions>
 				<configuration>
 					<mainClass>${start-class}</mainClass>
-					<includeSystemScope>true</includeSystemScope>
-				</configuration>
+<!-- 					<includeSystemScope>true</includeSystemScope>
+ -->				</configuration>
 			</plugin>
 			<!-- <plugin> <groupId>pl.project13.maven</groupId> <artifactId>git-commit-id-plugin</artifactId> 
 				<version>2.2.4</version> <executions> <execution> <id>get-the-git-infos</id> 

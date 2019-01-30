@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 @Component
-public class AppSettings {
+public class AppSettings2 {
 
   private static final String APP_SETTINGS_PROPERTIES_FILE = "/com/nexity/app-settings.properties";
 

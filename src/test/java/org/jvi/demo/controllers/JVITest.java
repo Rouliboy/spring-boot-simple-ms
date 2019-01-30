@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class JVITest {
 
   @Autowired
-  private AppSettings appSettings;
+  private AppSettings2 appSettings;
 
   @Test
   public void test() {

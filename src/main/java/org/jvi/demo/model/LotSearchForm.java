@@ -9,7 +9,7 @@ import lombok.Value;
 @Value
 @AllArgsConstructor(onConstructor = @__(@JsonCreator))
 @Builder
-public class Params {
+public class LotSearchForm {
 
   private boolean checkLotClient;
   private String immId;
@@ -34,5 +34,8 @@ public class Params {
   private String codeLotCommercial;
   private String codeLotStock;
   private String codeLotProgrammeCommercial;
+
+  // FIXME : gerer avec un pojo
+  // private String orderBy;
 
 }

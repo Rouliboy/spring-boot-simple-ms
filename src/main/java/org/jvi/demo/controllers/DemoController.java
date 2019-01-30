@@ -2,7 +2,7 @@ package org.jvi.demo.controllers;
 
 import javax.validation.Valid;
 import org.jvi.demo.mapper.ResultSetProcessorHandler;
-import org.jvi.demo.model.Search;
+import org.jvi.demo.model.LotSearch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -19,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @Slf4j
-@RequestMapping("/demo")
+@RequestMapping(value = "/demo", produces = {"application/json"})
 public class DemoController {
 
   @Autowired
@@ -42,14 +42,14 @@ public class DemoController {
   }
 
   @PostMapping("/post")
-  public String post(@RequestBody @Valid final Search search) {
+  public String post(@RequestBody @Valid final LotSearch search) {
 
     log.info("Enter in post : {}", search);
     return "OK";
   }
 
   @PostMapping("/postEx")
-  public String postEx(@RequestBody @Valid final Search search) {
+  public String postEx(@RequestBody @Valid final LotSearch search) {
     log.info("Enter in post : {}", search);
     throw new IllegalArgumentException("Error!!!");
   }

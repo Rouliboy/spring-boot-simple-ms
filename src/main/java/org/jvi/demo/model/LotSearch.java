@@ -11,14 +11,14 @@ import lombok.Value;
 @Value
 @AllArgsConstructor(onConstructor = @__(@JsonCreator))
 @Builder
-public class Search {
+public class LotSearch {
 
   @Valid
   @NotNull
-  private Body body;
+  private LotSearchForm form;
 
   @Valid
-  private Params params = Params.builder().build();
+  private LotSearchParams params = LotSearchParams.builder().build();
 
   @Valid
   @NotNull
