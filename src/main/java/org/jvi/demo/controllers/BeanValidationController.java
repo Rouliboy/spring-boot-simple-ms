@@ -1,6 +1,7 @@
 package org.jvi.demo.controllers;
 
 import javax.validation.Valid;
+import org.jvi.demo.model.pagination.Pagination;
 import org.jvi.demo.validation.constraints.Site;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,10 +18,17 @@ import lombok.extern.slf4j.Slf4j;
 @Validated
 public class BeanValidationController {
 
-  @GetMapping("/validation")
+  @GetMapping("/site")
   public ResponseEntity<String> test(
       @Valid @Site @RequestParam(required = false) final String siteId) {
 
+    return new ResponseEntity<String>("ok", HttpStatus.OK);
+  }
+
+  @GetMapping("/pagination")
+  public ResponseEntity<String> pagination(@Valid final Pagination pagination) {
+
+    log.info("pagination=" + pagination);
     return new ResponseEntity<String>("ok", HttpStatus.OK);
   }
 

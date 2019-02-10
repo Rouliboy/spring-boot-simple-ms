@@ -63,7 +63,19 @@
 			<artifactId>lib-location-security</artifactId>
 			<version>${lib-location-security.version}</version>
 		</dependency>
-
+		
+		<dependency>
+			<groupId>com.nexity.wgl.lib</groupId>
+			<artifactId>lib-location-security</artifactId>
+			<version>${lib-location-security.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.nexity.wgl</groupId>
+			<artifactId>excel-processing</artifactId>
+			<version>${lib-location-security.version}</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
