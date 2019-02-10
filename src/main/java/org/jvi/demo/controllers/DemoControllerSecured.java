@@ -19,8 +19,8 @@ import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @Slf4j
-@RequestMapping(value = "/demo", produces = {"application/json"})
-public class DemoController {
+@RequestMapping(value = "/api/demo", produces = {"application/json"})
+public class DemoControllerSecured {
 
   @Autowired
   private ResultSetProcessorHandler processorHandler;

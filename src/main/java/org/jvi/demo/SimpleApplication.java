@@ -2,6 +2,7 @@ package org.jvi.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import com.nexity.ms.lib.rest.error.config.EnableRestErrorHandler;
 import com.nexity.wgl.lib.logging.config.EnableServiceLogging;
 import com.nexity.wgl.lib.security.config.EnableServiceSecurity;
 import com.nexity.wgl.lib.utilctrl.configuration.EnableUtilControl;
@@ -14,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 @EnableServiceLogging
 @EnableCORS
 @EnableUtilControl
+@EnableRestErrorHandler
 public class SimpleApplication {
 
   public static void main(final String[] args) {

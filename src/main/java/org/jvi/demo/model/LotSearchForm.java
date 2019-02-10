@@ -1,6 +1,8 @@
 package org.jvi.demo.model;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import org.jvi.demo.validation.constraints.Site;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,7 +14,12 @@ import lombok.Value;
 public class LotSearchForm {
 
   private boolean checkLotClient;
+
+  @NotBlank
   private String immId;
+
+  @Site
+  private String siteId;
 
   private String immName;
 
