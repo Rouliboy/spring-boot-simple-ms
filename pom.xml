@@ -30,6 +30,7 @@
 		<lib-location-utils.version>0.0.1-SNAPSHOT</lib-location-utils.version>
 		<util-ctrl.version>0.0.1-SNAPSHOT</util-ctrl.version>
 		<lib-location-security.version>0.0.1-SNAPSHOT</lib-location-security.version>
+		<auto-service.version>1.0-rc2</auto-service.version>
 	</properties>
 
 	<dependencies>
@@ -197,6 +198,19 @@
 				<configuration>
 					<mainClass>${start-class}</mainClass>
 					<!-- <includeSystemScope>true</includeSystemScope> -->
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<annotationProcessors>
+						<annotationProcessor>com.nexity.wgl.lib.utils.annotation.processor.SimpleAnnotationProcessor</annotationProcessor>
+						<annotationProcessor>lombok.launch.AnnotationProcessorHider$AnnotationProcessor</annotationProcessor>
+					</annotationProcessors>
 				</configuration>
 			</plugin>
 			<!-- <plugin> <groupId>pl.project13.maven</groupId> <artifactId>git-commit-id-plugin</artifactId> 
